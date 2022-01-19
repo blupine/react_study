@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <div style={ {color : 'blue'} }>개발 blog</div>
+        <div style={ {color : 'blue', fontSize : '30px'} }>개발 blog</div>
       </div>
       <h4> { posts } </h4>
       <h4> { func() } </h4>
