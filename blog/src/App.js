@@ -11,7 +11,7 @@ function App() {
   // state : 변수 대신 쓰는 데이터 저장 공간
   // 그냥 변수는 변경되어도 새로고침이 되어야 재렌더링이 됨
   // state는 변경되면 HTML이 자동으로 재렌더링 됨
-
+  let [likeCnt, likeCntWriter] = useState(0);
   return (
     <div className="App">
       <div className="black-nav">
@@ -19,7 +19,7 @@ function App() {
       </div>
 
       <div className="list">
-        <h3> {글제목[0]} </h3>
+        <h3> {글제목[0]} <span onClick={ ()=>{ likeCntWriter(likeCnt+1) } }>👍🏻</span> {likeCnt}</h3>
         <p>2월 17일 발행</p>
         <hr/>
       </div>
