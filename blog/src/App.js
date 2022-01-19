@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
 
-  let posts = '강남 고기 맛집';
+  let posts = {color : 'blue', fontSize : '30px'};
   
   function func(){
     return 100
@@ -12,9 +12,8 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <div style={ {color : 'blue', fontSize : '30px'} }>개발 blog</div>
+        <div style={ posts }>개발 blog</div>
       </div>
-      <h4> { posts } </h4>
       <h4> { func() } </h4>
       <img src={logo}></img>
     </div>
