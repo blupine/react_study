@@ -16,6 +16,7 @@ function App() {
       </div>
       <h4> { posts } </h4>
       <h4> { func() } </h4>
+      <img src={logo}></img>
     </div>
   );
 }
