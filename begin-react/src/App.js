@@ -1,15 +1,10 @@
 import React from 'react';
-import Counter from './Counter'
-import CounterFunctional from './CounterFunctional';
+import InputSample from './InputSample';
 
 function App() {
   return (
-    <div>
-    <Counter/>
-    <br></br>
-    <CounterFunctional/>
-    </div>
-  );
+    <InputSample/>  
+  );    
 }
 
 export default App;
