@@ -43,13 +43,18 @@ function App() {
       email
     };
 
-    // setUsers([...users, user])
+    // setUsers([...users, user]) // 이 방법으로 해도 됨 - spread 연산자
     setUsers(users.concat(user))
     setInputs({
       username: '',
       email: ''
     });
     nextId.current += 1;
+  };
+
+  const onRemove = id => {
+    // id랑 일치하지 않는 원소들만 가지고 배열을 새로 만듬
+    setUsers(users.filter(user => user.id !== id));
   };
   
   return (
@@ -59,7 +64,7 @@ function App() {
       email={email}
       onChange={onChange}
       onCreate={onCreate} />
-    <UserList users={users} />
+    <UserList users={users} onRemove={onRemove}/>
     </>
   );    
 }
