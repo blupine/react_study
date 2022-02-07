@@ -1,9 +1,13 @@
 import React from 'react';
-import InputSample from './InputSample';
-
+import UserList from './UserList';
+import UserListMap from './UserListMap'
 function App() {
   return (
-    <InputSample/>  
+    <div>
+    <UserList/>  
+    <br></br>
+    <UserListMap/>
+    </div>
   );    
 }
 
