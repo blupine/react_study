@@ -1,22 +1,14 @@
 import React from 'react';
-import Hello from './Hello';
-import Hello2 from './Hello2';
-import Hello3 from './Hello3';
-import Wrapper from './Wrapper';
+import Counter from './Counter'
+import CounterFunctional from './CounterFunctional';
 
 function App() {
   return (
-    <Wrapper>
-    <Hello name="react" color="red" />
-
-    {/* 여러개의 props 비구조화 할당 */}
-    <Hello2 name="react" color="red" isSpecial={true}/>
-    <Hello2 name="react" color="red" isSpecial/>
-
-    
-    {/* defaultProps로 기본값 설정 */}
-    <Hello3 color="red"/>
-    </Wrapper>
+    <div>
+    <Counter/>
+    <br></br>
+    <CounterFunctional/>
+    </div>
   );
 }
 
