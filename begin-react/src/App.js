@@ -1,6 +1,11 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useMemo} from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser'
+
+function countActiveUsers(users){
+  console.log("활성 사용자 수를 세는중...")
+  return users.filter(user => user.active).length
+}
 
 function App() {
   const [inputs, setInputs] = useState({
@@ -65,7 +70,9 @@ function App() {
       users.map(user => user.id === id ? {...user, active: !user.active} : user)
     );
   };
-  
+
+  // 이전에 연산한 값 재사용, [users] 배열이 변경되면 렌더링을 다시하고,  바뀌지 않으면 이전에 연산한 값을 재사용(함수 재호출 ㄴㄴ)
+  const count = useMemo(() => countActiveUsers(users), [users]);
   return (
     <>
     <CreateUser
@@ -74,6 +81,7 @@ function App() {
       onChange={onChange}
       onCreate={onCreate} />
     <UserList users={users} onRemove={onRemove} onToggle={onToggle}/>
+    <div>활성사용자 수 : {count}</div>
     </>
   );    
 }
