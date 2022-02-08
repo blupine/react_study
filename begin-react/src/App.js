@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo} from 'react';
+import React, {useState, useRef, useMemo, useCallback} from 'react';
 import UserList from './UserList';
 import CreateUser from './CreateUser'
 
@@ -14,13 +14,16 @@ function App() {
   });
 
   const {username, email} = inputs;
-  const onChange = e => {
-    const {name, value} = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value
-    });
-  };
+  const onChange = useCallback(
+    e => {
+      const {name, value} = e.target;
+      setInputs({
+        ...inputs,
+        [name]: value
+      });
+    },
+    [inputs]
+  );
 
   const [users, setUsers ]= useState([
     {
@@ -44,8 +47,9 @@ function App() {
   ]);
 
   const nextId = useRef(4);
-  const onCreate = () => {
-    const user = {
+  const onCreate = useCallback(
+    () => {
+      const user = {
       id:nextId.current,
       username,
       email
@@ -58,7 +62,8 @@ function App() {
       email: ''
     });
     nextId.current += 1;
-  };
+  }, [users, username, email]
+  );
 
   const onRemove = id => {
     // id랑 일치하지 않는 원소들만 가지고 배열을 새로 만듬
