@@ -21,8 +21,7 @@ function App() {
         ...inputs,
         [name]: value
       });
-    },
-    [inputs]
+    },[]
   );
 
   const [users, setUsers ]= useState([
@@ -62,19 +61,19 @@ function App() {
       email: ''
     });
     nextId.current += 1;
-  }, [users, username, email]
+  }, [username, email]
   );
 
-  const onRemove = id => {
+  const onRemove = useCallback(id => {
     // id랑 일치하지 않는 원소들만 가지고 배열을 새로 만듬
     setUsers(users.filter(user => user.id !== id));
-  };
+  }, []);
 
-  const onToggle = id => {
+  const onToggle = useCallback(id => {
     setUsers(
       users.map(user => user.id === id ? {...user, active: !user.active} : user)
     );
-  };
+  }, []);
 
   // 이전에 연산한 값 재사용, [users] 배열이 변경되면 렌더링을 다시하고,  바뀌지 않으면 이전에 연산한 값을 재사용(함수 재호출 ㄴㄴ)
   const count = useMemo(() => countActiveUsers(users), [users]);
